@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'groovy'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.36'
+    implementation 'net.logstash.logback:logstash-logback-encoder:7.0.1'
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.10'
+
+}
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+
+version = '1.0.0'
